@@ -24,6 +24,7 @@ function get_article(page_id) {
 	.then(res => res.text())
 	.then(rep => {
 		let data = JSON.parse(rep.substr(47).slice(0, -2));
+		console.log(data);
 		
 		document.title = 'Jacob Maughan - ' + data.table.rows[0].c[1].v;
 	})
