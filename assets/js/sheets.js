@@ -14,7 +14,7 @@ function get_posts() {
 }
 
 function get_article(page_id) {
-	let sheet_title = 'page_id';
+	let sheet_title = page_id;
 	let sheet_range = 'A2:D10';
 	
 	let url = 'https://docs.google.com/spreadsheets/d/' + sheet_id + '/gviz/tq?sheet=' + sheet_title + '&range=' + sheet_range
@@ -23,7 +23,6 @@ function get_article(page_id) {
 	.then(res => res.text())
 	.then(rep => {
 		let data = JSON.parse(rep.substr(47).slice(0, -2));
-		console.log(data);
 		
 		document.title = 'Jacob Maughan - ' + data.table.rows[0].c[1].v;
 	})
