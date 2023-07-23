@@ -76,7 +76,7 @@ function get_posts() {
 					
 					if(lastDiv != 0) {
 						document.getElementById('posts_body').appendChild(rowDiv);
-						document.body.insertBefore(lastDiv, rowDiv);
+						document.getElementById('posts_body').insertBefore(rowDiv, lastDiv);
 					}
 					else {
 						document.getElementById('posts_body').appendChild(rowDiv);
