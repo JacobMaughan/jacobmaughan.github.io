@@ -37,6 +37,21 @@ function get_recent_posts() {
 	})
 }
 
+function get_about() {
+	let sheet_title = 'blog_about';
+	let sheet_range = 'A2:A2';
+	
+	let url = 'https://docs.google.com/spreadsheets/d/' + sheet_id + '/gviz/tq?sheet=' + sheet_title + '&range=' + sheet_range
+	
+	fetch(url)
+	.then(res => res.text())
+	.then(rep => {
+		let data = JSON.parse(rep.substr(47).slice(0, -2));
+		
+		document.getElementById('about_body').innerHTML = data.table.rows[0].c[0].v;
+	})
+}
+
 function get_posts() {
 	let sheet_title = 'blog_main';
 	let sheet_range = 'A2:D50';
@@ -47,6 +62,39 @@ function get_posts() {
 	.then(res => res.text())
 	.then(rep => {
 		let data = JSON.parse(rep.substr(47).slice(0, -2));
+		
+		let counter = 0;
+		let rowDiv = 0;
+		let lastDiv = 0;
+		
+		for(let i = 0; i < data.table.rows.length; i++) {
+			if(data.table.rows[i].c[0] == '') { break; }
+			else {
+				if(counter == 0) {
+					rowDiv = document.createElement("div");
+					rowDiv.className = "row";
+					
+					if(lastDiv != 0) {
+						document.body.insertBefore(lastDiv, rowDiv);
+					}
+					else {
+						document.getElementById('posts_body').appendChild(rowDiv);
+					}
+				}
+				aDiv = document.createElement("div");
+				aDiv.className = "col-3 col-6-medium col-12-small";
+				aDiv.innerHTML = "<section class=\'box feature\'> <a href=\'article?id=" + data.table.rows[i].c[0].v + "\' class=\'image featured\'><img src=\'" + data.table.rows[i].c[2].v + "\'/></a> <h3><a href=\'article?id=" + data.table.rows[i].c[0].v + "\'>" + data.table.rows[i].c[1].v + "</a></h3> <p>" + data.table.rows[i].c[3].v + "</p> </section>"
+				
+				rowDiv.appendChild(aDiv);
+				
+				counter += 1;
+				
+				if(counter == 4) {
+					lastDiv = rowDiv;
+					counter = 0;
+				}
+			}
+		}
 	})
 }
 
