@@ -4,7 +4,7 @@ function get_recent_posts() {
 	let sheet_title = 'blog_main';
 	let sheet_range = 'A2:D5';
 	
-	let url = 'http://docs.google.com/spreadsheets/d/' + sheet_id + '/gviz/tq?sheet=' + sheet_title + '&range=' + sheet_range
+	let url = 'https://docs.google.com/spreadsheets/d/' + sheet_id + '/gviz/tq?sheet=' + sheet_title + '&range=' + sheet_range
 	
 	fetch(url)
 	.then(res => res.text())
@@ -41,7 +41,7 @@ function get_posts() {
 	let sheet_title = 'blog_main';
 	let sheet_range = 'A2:D50';
 	
-	let url = 'http://docs.google.com/spreadsheets/d/' + sheet_id + '/gviz/tq?sheet=' + sheet_title + '&range=' + sheet_range
+	let url = 'https://docs.google.com/spreadsheets/d/' + sheet_id + '/gviz/tq?sheet=' + sheet_title + '&range=' + sheet_range
 	
 	fetch(url)
 	.then(res => res.text())
