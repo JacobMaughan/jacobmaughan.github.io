@@ -6,7 +6,7 @@ function get_recent_posts() {
 	
 	let url = 'http://docs.google.com/spreadsheets/d/' + sheet_id + '/gviz/tq?sheet=' + sheet_title + '&range=' + sheet_range
 	
-	fetch(FULL_URL)
+	fetch(url)
 	.then(res => res.text())
 	.then(rep => {
 		let data = JSON.parse(rep.substr(47).slice(0, -2));
@@ -43,7 +43,7 @@ function get_posts() {
 	
 	let url = 'http://docs.google.com/spreadsheets/d/' + sheet_id + '/gviz/tq?sheet=' + sheet_title + '&range=' + sheet_range
 	
-	fetch(FULL_URL)
+	fetch(url)
 	.then(res => res.text())
 	.then(rep => {
 		let data = JSON.parse(rep.substr(47).slice(0, -2));
