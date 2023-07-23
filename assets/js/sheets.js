@@ -61,7 +61,7 @@ function get_article(page_id) {
 	.then(rep => {
 		let data = JSON.parse(rep.substr(47).slice(0, -2));
 		
-		date = data.table.rows[0].c[2].v;
+		let date = data.table.rows[0].c[2].v;
 		
 		document.title = 'Jacob Maughan - ' + data.table.rows[0].c[0].v;
 		document.getElementById('article_title').innerHTML = data.table.rows[0].c[0].v;
