@@ -65,36 +65,21 @@ function get_posts() {
 		
 		let counter = 0;
 		let rowDiv = 0;
-		let lastDiv = 0;
 		
-		for(let i = 0; i < data.table.rows.length; i++) {
-			if(data.table.rows[i].c[0] == '') { break; }
-			else {
-				if(counter == 0) {
-					rowDiv = document.createElement("div");
-					rowDiv.className = "row";
-					
-					if(lastDiv != 0) {
-						document.getElementById('posts_body').appendChild(rowDiv);
-						document.getElementById('posts_body').insertBefore(rowDiv, lastDiv);
-					}
-					else {
-						document.getElementById('posts_body').appendChild(rowDiv);
-					}
-				}
-				aDiv = document.createElement("div");
-				aDiv.className = "col-3 col-6-medium col-12-small";
-				aDiv.innerHTML = "<section class=\'box feature\'> <a href=\'article?id=" + data.table.rows[i].c[0].v + "\' class=\'image featured\'><img src=\'" + data.table.rows[i].c[2].v + "\'/></a> <h3><a href=\'article?id=" + data.table.rows[i].c[0].v + "\'>" + data.table.rows[i].c[1].v + "</a></h3> <p>" + data.table.rows[i].c[3].v + "</p> </section>"
-				
-				rowDiv.appendChild(aDiv);
-				
-				counter += 1;
-				
-				if(counter == 4) {
-					lastDiv = rowDiv;
-					counter = 0;
-				}
+		for(let i = data.table.rows.length - 1; i >= 0; i--) {
+			if(counter == 0) {
+				rowDiv = document.createElement('div');
+				rowDiv.className = 'row';
+				document.getElementById('posts_body').appendChild(rowDiv);
 			}
+			articleDiv = document.createElement('div');
+			articleDiv.className = 'col-3 col-6-medium col-12-small';
+			articleDiv.innerHTML = "<section class=\'box feature\'> <a href=\'article?id=" + data.table.rows[i].c[0].v + "\' class=\'image featured\'><img src=\'" + data.table.rows[i].c[2].v + "\'/></a> <h3><a href=\'article?id=" + data.table.rows[i].c[0].v + "\'>" + data.table.rows[i].c[1].v + "</a></h3> <p>" + data.table.rows[i].c[3].v + "</p> </section>";
+		
+			rowDiv.appendChild(articleDiv);
+			
+			counter += 1;
+			if(counter == 4) {counter = 0;}
 		}
 	})
 }
