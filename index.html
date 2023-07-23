@@ -51,12 +51,27 @@
 
 													<!-- Feature -->
 														<section class="box feature">
-															<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-															<h3><a href="#">A Subheading</a></h3>
-															<p>
-																Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in
-																lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
-															</p>
+															<a href="#" class="image featured" id='article1_mainlink'><img id='article1_image'/></a>
+															<h3><a href="#" id='article1_title'></a></h3>
+															<p id='article1_heading'></p>
+														</section>
+														
+														<section class="box feature">
+															<a href="#" class="image featured" id='article2_mainlink'><img id='article2_image'/></a>
+															<h3><a href="#" id='article2_title'></a></h3>
+															<p id='article2_heading'></p>
+														</section>
+														
+														<section class="box feature">
+															<a href="#" class="image featured" id='article3_mainlink'><img id='article3_image'/></a>
+															<h3><a href="#" id='article3_title'></a></h3>
+															<p id='article3_heading'></p>
+														</section>
+														
+														<section class="box feature">
+															<a href="#" class="image featured" id='article4_mainlink'><img id='article4_image'/></a>
+															<h3><a href="#" id='article4_title'></a></h3>
+															<p id='article4_heading'></p>
 														</section>
 
 												</div>
@@ -120,7 +135,9 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script src="assets/js/sheets.js"></script>
+			<script src="assets/js/sheets.js">
+				get_recent_posts();
+			</script>
 
 	</body>
 </html>
